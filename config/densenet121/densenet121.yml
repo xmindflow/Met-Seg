@@ -1,0 +1,108 @@
+is3d: true
+lr_find: false
+
+############# module specific #############
+# do not touch this part
+detect_seg: false
+detect: true
+detect_mask: false
+
+checkpoints:
+  continue_training: false # whether to continue training from a checkpoint
+  test_mode: false # whether to run the model in test mode
+  ckpt_path: '/home/say26747/Desktop/detector_weight.ckpt' # path to the checkpoint
+  save_nifty: true # do not touch this
+
+dataset:
+  input_size: [64,64,64]
+  # mask_size: [64,64,64]
+  data_root: "/home/say26747/Desktop/datasets/Brats Mets/DATA"
+  num_samples_per_patient: 5
+  pos_sample_num: 1
+  neg_sample_num: 1
+  modalities: ['flair','t1ce', 't1'] #['flair', 't1', 't1ce', 't2']
+
+results_path: /home/say26747/Desktop/Met-Seg/detection # where to save the results
+
+data_loader:
+  use_cache: true
+  train: 
+    batch_size: 2  # total batch is batch_size * num_samples_per_patient
+    shuffle: true
+    num_workers: 16
+    pin_memory: true
+    persistent_workers: false
+  validation: 
+    batch_size: 1
+    shuffle: false
+    num_workers: 16
+    pin_memory: true
+    persistent_workers: false
+  test:
+    batch_size: 1
+    shuffle: false
+    num_workers: 16
+    pin_memory: false
+    persistent_workers: false
+
+optimizer:
+    name: 'Adam'
+    params:
+      lr: 0.0004
+    
+scheduler:
+  name: 'LinearWarmupCosineAnnealingLR'
+  params:
+    warmup_epochs: 10
+    max_epochs: 400
+    warmup_start_lr: 0.000001
+
+criterion:
+  dice:
+    coef: 0.0
+    params:
+      sigmoid: true
+      smooth_nr: 0 # to be more stable https://github.com/Project-MONAI/MONAI/issues/807
+      smooth_dr: 0.00001
+  bce:
+    coef: 1.0
+  focal:
+    coef: 0.0
+    params:
+      gamma: 2.0
+      alpha: 0.25
+  tversky:
+    coef: 0.0
+    params:
+      sigmoid: true
+      alpha: 0.3
+      beta: 0.7
+      smooth_nr: 0 # to be more stable https://github.com/Project-MONAI/MONAI/issues/807
+      smooth_dr: 0.00001
+
+trainer:
+  max_epochs: 400
+  max_steps: -1
+  check_val_every_n_epoch: 1
+  accelerator: "gpu"
+  devices: 1
+  benchmark: true
+  enable_progress_bar: true
+  precision: "bf16-mixed"
+  gradient_clip_algorithm: 'norm'
+  gradient_clip_val: 12
+  
+
+model: 
+  name: 'DenseNet121' # do not change this  
+  customized_name: 'bce_loss_f1_score_flair+t1ce+t1'
+  params:
+    spatial_dims: 3
+    in_channels: 3 # depends on the number of modalities
+    out_channels: 1
+    dropout_prob: 0.2
+
+sliding_window_params:
+  overlap: 0.5
+
+do_lesion_based_metrics: true
