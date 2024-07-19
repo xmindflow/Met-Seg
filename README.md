@@ -1,4 +1,4 @@
-# Segmentation of Brain Metastases in MRI: A Two-Stage Deep Learning Approach with Modality Impact Study <br> <span style="float: right"><sub><sup>MICCAI 2023 PRIME Workshop</sub></sup></span>
+# Segmentation of Brain Metastases in MRI: A Two-Stage Deep Learning Approach with Modality Impact Study <br> <span style="float: right"><sub><sup>MICCAI 2024 PRIME Workshop</sub></sup></span>
 
 This is the official repository of the paper titled "Segmentation of Brain Metastases in MRI: A Two-Stage Deep Learning Approach with Modality Impact Study" which introduces two-stage deep learning approach for brain metastasis segmentation.
 
