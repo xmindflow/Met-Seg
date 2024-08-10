@@ -1,5 +1,5 @@
 # Segmentation of Brain Metastases in MRI: A Two-Stage Deep Learning Approach with Modality Impact Study <br> <span style="float: right"><sub><sup>MICCAI 2024 PRIME Workshop</sub></sup></span>
-
+[![arXiv](https://img.shields.io/badge/arXiv-2407.14011-b31b1b.svg)](https://arxiv.org/abs/2407.14011)
 This is the official repository of the paper titled "Segmentation of Brain Metastases in MRI: A Two-Stage Deep Learning Approach with Modality Impact Study" which introduces two-stage deep learning approach for brain metastasis segmentation.
 
 > Yousef Sadegheih and Dorit Merhof
