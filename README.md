@@ -84,6 +84,7 @@ You can download the learned weights for the segmentor and detector for both ful
    Full Modality  | [[Download](https://myfiles.uni-regensburg.de/filr/public-link/file-download/0447879c90b809a80190bbf452df0f6b/120822/-2821463328806488135/segmentor_weight%20%28full%20modality%29.ckpt)]| [[Download](https://myfiles.uni-regensburg.de/filr/public-link/file-download/0447879c90b809a80190bbf45b1d0f6f/120821/-4880761362689834300/detector_weight%20%28full%20modality%29.ckpt)] 
    (t1c,t1,flair)       | [[Download](https://myfiles.uni-regensburg.de/filr/public-link/file-download/0447879c90b809a80190baf8143304d2/120763/-7398472434594936298/segmentor_weight.ckpt)]| [[Download](https://myfiles.uni-regensburg.de/filr/public-link/file-download/0447879c90b809a80190baf80a4804ce/120764/-5549921760222123808/detector_weight.ckpt)] 
 
+All released checkpoints are provided under the same [Apache-2.0 License](LICENSE) as this repository.
 
 ## Citation
 
